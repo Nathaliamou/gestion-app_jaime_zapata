@@ -1,13 +1,20 @@
 import { useState } from "react";
+import { usuarios } from "../../database/dataBase.jsx";
 const Login = () => {
+  usuarios.some((usuario) => {
+    console.log(usuario);
+  });
   const [getUsuario, setUsuario] = useState("");
   const [getContrasena, setContrasena] = useState("");
   function validarInicioSesion() {
-    if (getUsuario == "Jaime" && getContrasena == "1234") {
+    if (buscarUsuario()) {
       console.log("Inicio de sesión correcta");
     } else {
-        console.log('Error de credenciales')
+      console.log("Error de credenciales");
     }
+  }
+  function buscarUsuario(){
+    return usuarios.some(usuario => usuario.user == getUsuario)
   }
   return (
     <form action="">
@@ -23,7 +30,9 @@ const Login = () => {
           type="text"
         />
       </section>
-      <button onClick={validarInicioSesion} type="button">Iniciar Sesión</button>
+      <button onClick={validarInicioSesion} type="button">
+        Iniciar Sesión
+      </button>
     </form>
   );
 };

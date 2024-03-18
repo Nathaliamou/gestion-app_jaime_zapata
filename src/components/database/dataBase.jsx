@@ -1,6 +1,6 @@
 export let usuarios = [
     {
-        user: 'admin',
+        user: "admin",
         contrasena: 1234
     },
     {
