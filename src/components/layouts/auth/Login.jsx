@@ -1,20 +1,25 @@
 import { useState } from "react";
 import { usuarios } from "../../database/dataBase.jsx";
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
   usuarios.some((usuario) => {
     console.log(usuario);
   });
   const [getUsuario, setUsuario] = useState("");
   const [getContrasena, setContrasena] = useState("");
+  const redireccion = useNavigate();
+
   function validarInicioSesion() {
     if (buscarUsuario()) {
       console.log("Inicio de sesión correcta");
+      redireccion('/home')
     } else {
       console.log("Error de credenciales");
     }
   }
-  function buscarUsuario(){
-    return usuarios.some(usuario => usuario.user == getUsuario)
+  function buscarUsuario() {
+    return usuarios.some((usuario) => usuario.user == getUsuario);
   }
   return (
     <form action="">
