@@ -13,7 +13,7 @@ const Login = () => {
   function validarInicioSesion() {
     if (buscarUsuario()) {
       console.log("Inicio de sesión correcta");
-      redireccion('/home')
+      redireccion("/home");
     } else {
       console.log("Error de credenciales");
     }
@@ -22,7 +22,7 @@ const Login = () => {
     return usuarios.some((usuario) => usuario.user == getUsuario);
   }
   return (
-    <form action="">
+    <form className="formulario" action="">
       <section>
         <input
           onChange={(e) => setUsuario(e.target.value)}
@@ -35,9 +35,11 @@ const Login = () => {
           type="text"
         />
       </section>
-      <button onClick={validarInicioSesion} type="button">
-        Iniciar Sesión
-      </button>
+      <section className="botones">
+        <button onClick={validarInicioSesion} type="button">
+          Iniciar Sesión
+        </button>
+      </section>
     </form>
   );
 };
