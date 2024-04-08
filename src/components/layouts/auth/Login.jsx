@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { usuarios } from "../../database/dataBase.jsx";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "./Login.css";
 
 const Login = () => {
-  usuarios.some((usuario) => {
-    console.log(usuario);
-  });
   const [getUsuario, setUsuario] = useState("");
   const [getContrasena, setContrasena] = useState("");
   const redireccion = useNavigate();
@@ -19,27 +17,41 @@ const Login = () => {
     }
   }
   function buscarUsuario() {
-    return usuarios.some((usuario) => usuario.user == getUsuario);
+    return usuarios.some((usuario) => usuario.user === getUsuario);
   }
   return (
-    <form className="formulario" action="">
-      <section>
-        <input
-          onChange={(e) => setUsuario(e.target.value)}
-          placeholder="Usuario"
-          type="text"
-        />
-        <input
-          onChange={(e) => setContrasena(e.target.value)}
-          placeholder="Contraseña"
-          type="text"
-        />
-      </section>
-      <section className="botones">
-        <button onClick={validarInicioSesion} type="button">
-          Iniciar Sesión
-        </button>
-      </section>
+    <form>
+      <div className="container fadeInAnimation">
+        <h2>Iniciar Sesión</h2>
+        <div className="input-group">
+          <label htmlFor="username">Usuario:</label>
+          <input
+            type="text"
+            id="username"
+            onChange={(e) => {
+              setUsuario(e.target.value);
+            }}
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="password">Contraseña:</label>
+          <input
+            type="password"
+            id="password"
+            onChange={(e) => {
+              setContrasena(e.target.value);
+            }}
+          />
+        </div>
+        <section className="botones">
+          <button onClick={validarInicioSesion} type="button" className="btn">
+            Iniciar Sesión
+          </button>
+          <Link to={"/registro"} className="btn">
+            Crear cuenta
+          </Link>
+        </section>
+      </div>
     </form>
   );
 };
