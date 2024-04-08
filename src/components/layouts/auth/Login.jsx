@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { usuarios } from "../../database/dataBase.jsx";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
@@ -47,9 +47,6 @@ const Login = () => {
           <button onClick={validarInicioSesion} type="button" className="btn">
             Iniciar Sesión
           </button>
-          <Link to={"/registro"} className="btn">
-            Crear cuenta
-          </Link>
         </section>
       </div>
     </form>
